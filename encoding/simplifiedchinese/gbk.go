@@ -203,6 +203,10 @@ func (e gbkEncoder) Transform(dst, src []byte, atEOF bool) (nDst, nSrc int, err 
 				if r2 = rune(encode4[r-encode4Low]); r2 != 0 {
 					goto write2
 				}
+			case encode5Low <= r && r < encode5High:
+				if r2 = rune(encode5[r-encode5Low]); r2 != 0 {
+					goto write2
+				}
 			}
 
 			if e.gb18030 {
